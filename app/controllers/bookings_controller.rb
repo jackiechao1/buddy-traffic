@@ -1,11 +1,14 @@
 class BookingsController < ApplicationController
-	def index
-		bookings = Booking.all
-		@bookings = bookings.select { |booking| booking.user == current_user }
-	end
+  def index
+    bookings = Booking.all
+    @bookings = bookings.select { |booking| booking.user == current_user }
+    current_user.buddies&.each do |buddy|
+      @my_bookings = buddy.bookings
+    end
+  end
 
-	def create
-		@booking = Booking.new(booking_params)
+  def create
+    @booking = Booking.new(booking_params)
     @booking.buddy = Buddy.find(params[:buddy_id])
     @booking.user = current_user
     @booking.status = 'undone'
@@ -14,11 +17,17 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-	end
+  end
 
-	private
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.delete
+    redirect_to bookings_path
+  end
 
-	def booking_params
-		params.require(:booking).permit(:start_date, :end_date)
-	end
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
 end
