@@ -1,7 +1,20 @@
 
+<div class = "cards" >
 
 <% @buddies.each do |buddy| %>
-  <p><%= link_to buddy.name, buddy_path(buddy) %></p>
+  <div class="card-trip">
+    <img src=<% buddy.picture %>>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
+        <p><%= buddy.age %> years old </p>
+      </div>
+
   <p><%= link_to 'edit', edit_buddy_path(buddy) %></p>
   <%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  </div>
+</div>
+
 <% end %>
+</div>
