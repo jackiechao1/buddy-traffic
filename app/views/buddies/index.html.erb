@@ -1,11 +1,8 @@
 
 
-
 <% @buddies.each do |buddy| %>
   <p><%= buddy.name %></p>
   <p><%= link_to 'edit', edit_buddy_path(buddy) %></p>
   <p><%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
 <% end %>
-
-
