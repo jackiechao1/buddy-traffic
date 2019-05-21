@@ -1,3 +1,9 @@
 <%= @buddy.name %>
 <%= @buddy.description %>
 <%= @buddy.age %>
+
+<%= simple_form_for [@buddy, @booking] do |f|%>
+	<%= f.input :start_date %>
+	<%= f.input :end_date %>
+	<%= f.submit "book buddy"%>
+<% end %>
