@@ -1,4 +1,12 @@
 <% @bookings.each do |booking| %>
+
   <p><%= booking.status %></p>
   <%= link_to 'Cancel booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<% if @my_bookings != nil %>
+	<% @my_bookings.each do |booking| %>
+ 	  <p><%= booking.buddy.name %></p>
+ 	  <p><%= booking.status %></p>
+	<% end %>
 <% end %>
