@@ -5,8 +5,15 @@
 <% end %>
 
 <% if @my_bookings != nil %>
+	<h2>My buddies</h2>
 	<% @my_bookings.each do |booking| %>
  	  <p><%= booking.buddy.name %></p>
+ 	  <p><%= booking.user.email %></p>
  	  <p><%= booking.status %></p>
 	<% end %>
 <% end %>
+
+
+
+
+
