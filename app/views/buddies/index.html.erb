@@ -3,7 +3,7 @@
 
 <% @buddies.each do |buddy| %>
   <div class="card-trip">
-    <img src=<% buddy.picture %>>
+    <img src=<%= buddy.picture %>>
     <div class="card-trip-infos">
       <div>
         <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
