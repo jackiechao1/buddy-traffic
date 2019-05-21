@@ -10,8 +10,9 @@
         <p><%= buddy.age %> years old </p>
       </div>
 
-  <p><%= link_to 'edit', edit_buddy_path(buddy) %></p>
-  <%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p><%= link_to 'edit', edit_buddy_path(buddy), class: "btn btn-info" %></p>
+
+  <%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %>
 
   </div>
 </div>
