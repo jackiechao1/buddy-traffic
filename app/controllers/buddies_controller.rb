@@ -42,6 +42,6 @@ class BuddiesController < ApplicationController
   end
 
   def buddy_params
-    params.require(:buddy).permit(:name, :location, :sex, :start_available_time, :end_available_time, :picture, :description, :user, :age)
+    params.require(:buddy).permit(:name, :location, :sex, :start_available_time, :end_available_time, :picture, :description, :age)
   end
 end
