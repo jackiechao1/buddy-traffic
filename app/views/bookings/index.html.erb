@@ -24,7 +24,6 @@
   <br>
   <br>
 
-  <% if @my_bookings != nil %>
 
 <h2>My buddies 👥</h2>
 <br>
@@ -32,15 +31,14 @@
 <div class = "cards" >
   	<% @my_bookings.each do |booking| %>
   <div class="card-trip">
-    <img src=<%= booking.buddy.picture %>>
+    <img src=<%= booking.picture %>>
       <div class="card-trip-infos">
         <div>
-       	  <h2><%= booking.buddy.name %></h2>
-       	  <p><%= booking.user.email %></p>
-       	  <p><strong><%= booking.status %></strong></p>
+       	  <h2><%= booking.name %></h2>
+       	  
         </div>
   </div>
-  <% end %>
+
 <% end %>
 </div>
 
