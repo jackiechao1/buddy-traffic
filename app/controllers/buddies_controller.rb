@@ -24,7 +24,7 @@ class BuddiesController < ApplicationController
 
   def destroy
     @buddy = Buddy.find(params[:id])
-    @buddy.delete
+    @buddy.destroy
     redirect_to buddies_path
   end
 
