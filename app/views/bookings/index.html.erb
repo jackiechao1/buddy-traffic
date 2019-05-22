@@ -1,8 +1,10 @@
 <h2>My bookings</h2>
 <% @bookings.each do |booking| %>
+
   <p>User: <%= booking.buddy.name %></p>
   <p>Owner: <%= booking.buddy.user.email %></p>
   <p>Total Price: <%= booking.price %>$</p>
+
   <p><%= booking.status %></p>
   <%= link_to 'Cancel booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
@@ -11,6 +13,7 @@
 <br>
 
 <% if @my_bookings != nil %>
+
 	<h2>My buddies</h2>
 	<% @my_bookings.each do |booking| %>
  	  <p><%= booking.buddy.name %></p>

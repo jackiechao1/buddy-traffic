@@ -1,11 +1,20 @@
 class BuddiesController < ApplicationController
   def index
     @buddies = Buddy.all
+    @buddies = Buddy.where.not(latitude: nil, longitude: nil)
+
+    @markers = @buddies.map do |buddy|
+      {
+        lat: buddy.latitude,
+        lng: buddy.longitude
+      }
+    end
   end
 
   def show
     @buddy = Buddy.find(params[:id])
     @booking = Booking.new
+    @markers = [{ lat: @buddy.latitude, lng: @buddy.longitude}]
   end
 
   def new
