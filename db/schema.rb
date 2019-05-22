@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_140851) do
     t.float "longitude"
     t.integer "price"
 
+
     t.index ["user_id"], name: "index_buddies_on_user_id"
   end
 
