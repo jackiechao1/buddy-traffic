@@ -4,14 +4,19 @@
 
 <% @bookings.each do |booking| %>
 
+
    <div class="card-trip">
     <img src=<%= booking.buddy.picture %>>
       <div class="card-trip-infos">
+       <p>User: <%= booking.buddy.name %></p>
+      <p>Owner: <%= booking.buddy.user.email %></p>
+      <p>Total Price: <%= booking.price %>$</p>
 
       <p><%= booking.status %></p>
       <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
   </div>
+
 <% end %>
 </div>
 

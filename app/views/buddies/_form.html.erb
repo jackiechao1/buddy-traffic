@@ -8,8 +8,9 @@
       <%= f.input :name %>
       <%= f.input :age %>
       <%= f.input :description %>
-      <%= f.input :sex %>
+      <%= f.input :sex, collection: ['Male', 'Female'] %>
       <%= f.input :location %>
+      <%= f.input :price %>
       <%= f.input :start_available_time, as: :date %>
       <%= f.input :end_available_time, as: :date %>
       <%= f.input :picture %>

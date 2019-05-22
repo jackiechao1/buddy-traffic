@@ -33,7 +33,7 @@ class BuddiesController < ApplicationController
 
   def destroy
     @buddy = Buddy.find(params[:id])
-    @buddy.delete
+    @buddy.destroy
     redirect_to buddies_path
   end
 
@@ -51,6 +51,6 @@ class BuddiesController < ApplicationController
   end
 
   def buddy_params
-    params.require(:buddy).permit(:name, :location, :sex, :start_available_time, :end_available_time, :picture, :description, :age)
+    params.require(:buddy).permit(:name, :location, :sex, :start_available_time, :end_available_time, :picture, :description, :age, :price)
   end
 end
