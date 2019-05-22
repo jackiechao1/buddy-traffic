@@ -1,28 +1,46 @@
-<h2>My bookings</h2>
+<h2>Buddies Booked</h2>
+
+<div class = "cards" >
+
 <% @bookings.each do |booking| %>
 
-  <p>User: <%= booking.buddy.name %></p>
-  <p>Owner: <%= booking.buddy.user.email %></p>
-  <p>Total Price: <%= booking.price %>$</p>
 
-  <p><%= booking.status %></p>
-  <%= link_to 'Cancel booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %>
+   <div class="card-trip">
+    <img src=<%= booking.buddy.picture %>>
+      <div class="card-trip-infos">
+       <p>User: <%= booking.buddy.name %></p>
+      <p>Owner: <%= booking.buddy.user.email %></p>
+      <p>Total Price: <%= booking.price %>$</p>
+
+      <p><%= booking.status %></p>
+      <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+  </div>
+
 <% end %>
-<br>
-<br>
+</div>
+
+  <br>
+  <br>
+  <br>
+
+  <% if @my_bookings != nil %>
+
+<h2>My buddies</h2>
 <br>
 
-<% if @my_bookings != nil %>
-
-	<h2>My buddies</h2>
-	<% @my_bookings.each do |booking| %>
- 	  <p><%= booking.buddy.name %></p>
- 	  <p><%= booking.user.email %></p>
- 	  <p><%= booking.status %></p>
-	<% end %>
+<div class = "cards" >
+  	<% @my_bookings.each do |booking| %>
+  <div class="card-trip">
+    <img src=<%= booking.buddy.picture %>>
+      <div class="card-trip-infos">
+   	  <p><%= booking.buddy.name %></p>
+   	  <p><%= booking.user.email %></p>
+   	  <p><%= booking.status %></p>
+  </div>
+  <% end %>
 <% end %>
-
-
+</div>
 
 
 
