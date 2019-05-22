@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @days = @booking.end_date.mjd - @booking.start_date.mjd
     @booking.price = @days * @booking.buddy.price
-    @booking.status = 'undone'
+    @booking.status = 'unbooked'
     if @booking.save
       redirect_to buddies_path
     else
