@@ -2,9 +2,7 @@ class BookingsController < ApplicationController
   def index
     bookings = Booking.all
     @bookings = bookings.select { |booking| booking.user == current_user }
-    current_user.buddies&.each do |buddy|
-      @my_bookings = buddy.bookings
-    end
+    @my_bookings = current_user.buddies
   end
 
   def create

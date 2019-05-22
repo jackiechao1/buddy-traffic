@@ -3,7 +3,7 @@
 
 <% @buddies.each do |buddy| %>
   <div class="card-trip">
-    <img src=<%= buddy.picture %>>
+    <%= cl_image_tag(buddy.picture, secure: true) %>
     <div class="card-trip-infos">
       <div>
         <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
