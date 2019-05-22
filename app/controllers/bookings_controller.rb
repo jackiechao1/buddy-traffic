@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.price = @days * @booking.buddy.price
     @booking.status = 'unbooked'
     if @booking.save
-      redirect_to buddies_path
+      redirect_to bookings_path
     else
       render :new
     end
