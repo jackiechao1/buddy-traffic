@@ -6,6 +6,7 @@ class Buddy < ApplicationRecord
   validates :age, presence: true
   validates :sex, presence: true
   validates :description, presence: true
+  validates :price, presence: true
   validates :location, presence: true
   validates :start_available_time, presence: true
   validates :end_available_time, presence: true
