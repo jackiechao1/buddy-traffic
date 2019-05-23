@@ -25,14 +25,14 @@ class BuddiesController < ApplicationController
     @buddy = Buddy.new(buddy_params)
     # build skills array from params
     array_skills = []
-    array_skills << 'ruby' if params[:ruby] == 1
-    array_skills << 'rails' if params[:rails] == 1
-    array_skills << 'js' if params[:javascript] == 1
-    array_skills << 'jquery' if params[:jquery] == 1
-    array_skills << 'sql' if params[:sql] == 1
-    array_skills << 'html' if params[:html] == 1
-    array_skills << 'github' if params[:github] == 1
-    array_skills << 'heroku' if params[:heroku] == 1
+    array_skills << 'ruby' if params[:buddy][:ruby] == '1'
+    array_skills << 'rails' if params[:buddy][:rails] == '1'
+    array_skills << 'js' if params[:buddy][:javascript] == '1'
+    array_skills << 'jquery' if params[:buddy][:jquery] == '1'
+    array_skills << 'sql' if params[:buddy][:sql] == '1'
+    array_skills << 'html' if params[:buddy][:html] == '1'
+    array_skills << 'github' if params[:buddy][:github] == '1'
+    array_skills << 'heroku' if params[:buddy][:heroku] == '1'
 
     @buddy.skills = array_skills
 

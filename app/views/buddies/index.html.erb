@@ -7,7 +7,6 @@
     <div class="card-trip-infos">
       <div>
         <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
-
       <% if buddy.skills.include?("ruby") %>
       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
       <% end %>
