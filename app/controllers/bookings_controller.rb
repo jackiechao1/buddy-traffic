@@ -9,8 +9,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.buddy = Buddy.find(params[:buddy_id])
     @booking.user = current_user
-    @days = @booking.end_date.mjd - @booking.start_date.mjd
-    @booking.price = @days * @booking.buddy.price
     @booking.status = 'unbooked'
     if @booking.save
       redirect_to bookings_path

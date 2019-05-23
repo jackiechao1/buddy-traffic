@@ -6,11 +6,26 @@
 
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :age %>
       <%= f.input :description %>
-      <%= f.input :sex, collection: ['Male', 'Female'] %>
       <%= f.input :location %>
-      <%= f.input :price %>
+      
+      <%= label_tag "Ruby" %>
+      <%= check_box_tag "buddy[ruby]" %>
+      <%= label_tag "Rails" %>
+      <%= check_box_tag "buddy[rails]" %>
+      <%= label_tag "Javascript" %>
+      <%= check_box_tag "buddy[javascript]" %>
+      <%= label_tag "jQuery" %>
+      <%= check_box_tag "buddy[jquery]" %>
+      <%= label_tag "SQl" %>
+      <%= check_box_tag "buddy[sql]" %>
+      <%= label_tag "HTML and css" %>
+      <%= check_box_tag "buddy[html]" %>
+      <%= label_tag "Github" %>
+      <%= check_box_tag "buddy[github]" %>
+      <%= label_tag "Heroku" %>
+      <%= check_box_tag "buddy[heroku]" %>
+
       <%= f.input :start_available_time, as: :date %>
       <%= f.input :end_available_time, as: :date %>
       <%= f.input :picture %>
