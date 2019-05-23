@@ -24,6 +24,19 @@ class BuddiesController < ApplicationController
 
   def create
     @buddy = Buddy.new(buddy_params)
+    # build skills array from params
+    array_skills = []
+    array_skills << 'ruby' if params[:buddy][:ruby] == '1'
+    array_skills << 'rails' if params[:buddy][:rails] == '1'
+    array_skills << 'js' if params[:buddy][:javascript] == '1'
+    array_skills << 'jquery' if params[:buddy][:jquery] == '1'
+    array_skills << 'sql' if params[:buddy][:sql] == '1'
+    array_skills << 'html' if params[:buddy][:html] == '1'
+    array_skills << 'github' if params[:buddy][:github] == '1'
+    array_skills << 'heroku' if params[:buddy][:heroku] == '1'
+
+    @buddy.skills = array_skills
+
     @buddy.user = current_user
     if @buddy.save!
       redirect_to bookings_path
@@ -52,6 +65,6 @@ class BuddiesController < ApplicationController
   end
 
   def buddy_params
-    params.require(:buddy).permit(:name, :location, :sex, :start_available_time, :end_available_time, :picture, :description, :age, :price)
+    params.require(:buddy).permit(:name, :location, :start_available_time, :end_available_time, :picture, :description)
   end
 end

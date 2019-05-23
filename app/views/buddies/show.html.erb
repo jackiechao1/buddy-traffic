@@ -6,9 +6,8 @@
 
     <%= simple_form_for [@buddy, @booking] do |f|%>
     <%= @buddy.name %>
-    <%= @buddy.description %>
-    <%= @buddy.age %>
-      <p><%= @buddy.price %>$</p>
+    <p> <%= @buddy.description %> </p>
+
     	<%= f.input :start_date %>
     	<%= f.input :end_date %>
     	<%= f.submit "book buddy", class: "btn btn-info"%>
@@ -24,6 +23,7 @@
   height: 250px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+
+</div>
 
 

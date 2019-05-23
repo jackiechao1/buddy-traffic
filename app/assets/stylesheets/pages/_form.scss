@@ -8,3 +8,13 @@
   font-weight: bold;
 }
 
+
+.display-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  label{
+    margin-bottom: 0;
+  }
+}

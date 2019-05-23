@@ -1,45 +1,69 @@
-<h2 class= "title">Buddies Booked</h2>
+
+<h2 class="title"> Buddies Booked </h2>
+
 
 <div class = "cards" >
-
-<% @bookings.each do |booking| %>
-
-
-   <div class="card-trip">
-    <img src=<%= booking.buddy.picture %>>
+  <% @bookings.each do |booking| %>
+    <div class="card-trip">
+      <img src=<%= booking.buddy.picture %>>
       <div class="card-trip-infos">
-       <p>User: <%= booking.buddy.name %></p>
-      <p>Owner: <%= booking.buddy.user.email %></p>
-      <p>Total Price: <%= booking.price %>$</p>
 
-      <p><%= booking.status %></p>
-      <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div>
+          <h2><%= booking.buddy.name%></h2>
+          <p><%= booking.buddy.user.email%></p>
+          <p><%= booking.start_date %></p>
+          <p><%= booking.end_date %></p>
+        </div>
+        <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+
       </div>
-  </div>
-
-<% end %>
+    </div>
+  <% end %>
 </div>
 
-  <br>
-  <br>
-  <br>
+<br>
+<br>
+<br>
 
-  <% if @my_bookings != nil %>
 
-<h2 class= "title">My buddies</h2>
+<h2 class="title">My buddies </h2>
 <br>
 
 <div class = "cards" >
-  	<% @my_bookings.each do |booking| %>
-  <div class="card-trip">
-    <img src=<%= booking.buddy.picture %>>
-      <div class="card-trip-infos">
-   	  <p><%= booking.buddy.name %></p>
-   	  <p><%= booking.user.email %></p>
-   	  <p><%= booking.status %></p>
-  </div>
+  <% @my_buddies.each do |buddy| %>
+    <% if buddy.bookings == [] %>
+      <div class="card-trip">
+        <img src=<%= buddy.picture %>>
+          <div class="card-trip-infos">
+            <div>
+         	    <h2><%= buddy.name %></h2>
+            </div>
+            <p><%= link_to 'edit', edit_buddy_path(buddy), class: "btn btn-info" %></p>
+            <%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %>
+          </div>
+      </div>
+    <% else %>
+      <% buddy.bookings.each do |booking| %>
+        <div class="card-trip">
+          <img src=<%= booking.buddy.picture %>>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= booking.buddy.name %></h2>
+            </div>
+            <p><%= booking.user.email %></p>
+            <% if booking.status != 'validated' %>
+              <p><%= link_to 'Validate', booking_validate_path(booking), method: :patch, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %></p>
+              <%= link_to 'Refuse the booking', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %>
+            <% else %>
+              <p>Validated</p>
+              <%= link_to 'Cancel the booking', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
   <% end %>
-<% end %>
 </div>
 
 

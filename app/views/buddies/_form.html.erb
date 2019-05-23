@@ -6,11 +6,46 @@
 
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :age %>
       <%= f.input :description %>
-      <%= f.input :sex, collection: ['Male', 'Female'] %>
       <%= f.input :location %>
-      <%= f.input :price %>
+      <div class= "display-flex">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
+        <%= label_tag "Ruby" %>
+        <%= check_box_tag "buddy[ruby]" %>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png" height="14" width="14">
+        <%= label_tag "Rails" %>
+        <%= check_box_tag "buddy[rails]" %>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" height="14" width="14">
+        <%= label_tag "Javascript" %>
+        <%= check_box_tag "buddy[javascript]" %>
+
+
+        <img src="http://kodeik.com/wp-content/uploads/2017/09/jquery1.png" height="16" width="16">
+        <%= label_tag "jQuery" %>
+        <%= check_box_tag "buddy[jquery]" %>
+      </div>
+
+
+      <div class= "display-flex">
+        <img src="https://www.postgresql.org/media/img/about/press/elephant.png" height="14" width="14">
+        <%= label_tag "sql" %>
+        <%= check_box_tag "buddy[sql]" %>
+
+        <img src="https://pixees.fr/wp-content/uploads/2015/11/david_roche_dr_12-300x300.png" height="18" width="18">
+        <%= label_tag "HTML and css" %>
+        <%= check_box_tag "buddy[html]" %>
+
+        <img src="https://png2.kisspng.com/sh/cb19d0b2a1ea6e43f969f1938184ef7d/L0KzQYm3VsIzN5pqj5H0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TfdqfJl6ep9yY3BxPbXskBlodl46eqRtOEW4coS8Vsc6OV86Sqg8N0KzQ4K8Usk4OGoASac7MUi7PsH1h5==/kisspng-computer-icons-github-icon-design-5b2d855b356791.5263720315297099152188.png" height="15" width="15">
+        <%= label_tag "Github" %>
+        <%= check_box_tag "buddy[github]" %>
+
+        <img src="http://www.stickpng.com/assets/images/58480873cef1014c0b5e48ea.png" height="13" width="13">
+        <%= label_tag "Heroku" %>
+        <%= check_box_tag "buddy[heroku]" %>
+      </div>
+      <br>
       <%= f.input :start_available_time, as: :date %>
       <%= f.input :end_available_time, as: :date %>
       <%= f.input :picture %>
