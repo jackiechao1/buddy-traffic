@@ -6,7 +6,8 @@ class BuddiesController < ApplicationController
     @markers = @buddies.map do |buddy|
       {
         lat: buddy.latitude,
-        lng: buddy.longitude
+        lng: buddy.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { buddy: buddy })
       }
     end
   end

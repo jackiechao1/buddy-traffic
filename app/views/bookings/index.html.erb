@@ -1,10 +1,13 @@
+
 <h2 class="title"> Buddies Booked </h2>
+
 
 <div class = "cards" >
   <% @bookings.each do |booking| %>
     <div class="card-trip">
       <img src=<%= booking.buddy.picture %>>
       <div class="card-trip-infos">
+
         <div>
           <h2><%= booking.buddy.name%></h2>
           <p><%= booking.buddy.user.email%></p>
@@ -12,6 +15,7 @@
           <p><%= booking.end_date %></p>
         </div>
         <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+
       </div>
     </div>
   <% end %>
@@ -20,6 +24,7 @@
 <br>
 <br>
 <br>
+
 
 <h2 class="title">My buddies </h2>
 <br>
@@ -57,6 +62,7 @@
         </div>
       <% end %>
     <% end %>
+
   <% end %>
 </div>
 
