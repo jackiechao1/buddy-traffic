@@ -4,7 +4,6 @@ class Buddy < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :name, presence: true
   validates :description, presence: true
-  validates :skills, presence: true
   validates :location, presence: true
   validates :start_available_time, presence: true
   validates :end_available_time, presence: true
