@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :buddies do
-  	resources :bookings, only: [:create, :edit, :update]	
+  	resources :bookings, only: [:create]
+      
   end
-  resources :bookings, only: [:destroy, :index]
+  resources :bookings, only: [:destroy, :index] do 
+  	patch :validate, to: 'bookings#validate'
+  end
 end

@@ -8,18 +8,6 @@
       <div>
         <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
 
-    <!-- uddy = Buddy.new(buddy_params)
-    # build skills array from params
-    array_skills = []
-    array_skills << 'ruby' if params[:ruby] == 1
-    array_skills << 'rails' if params[:rails] == 1
-    array_skills << 'js' if params[:javascript] == 1
-    array_skills << 'jquery' if params[:jquery] == 1
-    array_skills << 'sql' if params[:sql] == 1
-    array_skills << 'html' if params[:html] == 1
-    array_skills << 'github' if params[:github] == 1
-    array_skills << 'heroku' if params[:heroku] == 1
- -->
       <% if buddy.skills.include?("ruby") %>
       <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
       <% end %>
@@ -56,11 +44,11 @@
 <% end %>
 </div>
 </div>
+
 <div
   id="map"
   style="width: 100%;
   height: 400px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
+/>
