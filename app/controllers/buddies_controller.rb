@@ -6,7 +6,8 @@ class BuddiesController < ApplicationController
     @markers = @buddies.map do |buddy|
       {
         lat: buddy.latitude,
-        lng: buddy.longitude
+        lng: buddy.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { buddy: buddy })
       }
     end
   end
@@ -14,7 +15,7 @@ class BuddiesController < ApplicationController
   def show
     @buddy = Buddy.find(params[:id])
     @booking = Booking.new
-    @markers = [{ lat: @buddy.latitude, lng: @buddy.longitude}]
+    @markers = [{ lat: @buddy.latitude, lng: @buddy.longitude }]
   end
 
   def new

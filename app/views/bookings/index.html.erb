@@ -1,4 +1,4 @@
-<h2>Buddies Booked ✅</h2>
+<h2 class= "title">Buddies Booked</h2>
 
 <div class = "cards" >
 
@@ -8,11 +8,11 @@
    <div class="card-trip">
     <img src=<%= booking.buddy.picture %>>
       <div class="card-trip-infos">
-        <div>
-         <h2><%= booking.buddy.name%></h2>
-          <p><%= booking.buddy.user.email%></p>
-          <p><strong><%= booking.price %>$</strong></p>
-        </div>
+       <p>User: <%= booking.buddy.name %></p>
+      <p>Owner: <%= booking.buddy.user.email %></p>
+      <p>Total Price: <%= booking.price %>$</p>
+
+      <p><%= booking.status %></p>
       <%= link_to 'Cancel booking', booking, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
   </div>
@@ -26,7 +26,7 @@
 
   <% if @my_bookings != nil %>
 
-<h2>My buddies 👥</h2>
+<h2 class= "title">My buddies</h2>
 <br>
 
 <div class = "cards" >
@@ -34,11 +34,9 @@
   <div class="card-trip">
     <img src=<%= booking.buddy.picture %>>
       <div class="card-trip-infos">
-        <div>
-       	  <h2><%= booking.buddy.name %></h2>
-       	  <p><%= booking.user.email %></p>
-       	  <p><strong><%= booking.status %></strong></p>
-        </div>
+   	  <p><%= booking.buddy.name %></p>
+   	  <p><%= booking.user.email %></p>
+   	  <p><%= booking.status %></p>
   </div>
   <% end %>
 <% end %>
