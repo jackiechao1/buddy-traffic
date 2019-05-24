@@ -1,45 +1,31 @@
 
 <div class="form-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&);">
 
-    <div class="container">
-      <div class="form-inputs">
-
+  <div class="container">
+    <div class="form-inputs">
       <%= simple_form_for [@buddy, @booking] do |f|%>
-      <%= @buddy.name %>
-      <p> <%= @buddy.description %> </p>
-            <div> Skills :
-              <% if @buddy.skills.include?("ruby") %>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
-              <% end %>
-              <% if @buddy.skills.include?("rails") %>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png" height="14" width="14">
-              <% end %>
-              <% if @buddy.skills.include?("js") %>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" height="14" width="14">
-              <% end %>
-              <% if @buddy.skills.include?("jquery") %>
-                <img src="http://kodeik.com/wp-content/uploads/2017/09/jquery1.png" height="16" width="16">
-              <% end %>
-              <% if @buddy.skills.include?("sql") %>
-                <img src="https://www.postgresql.org/media/img/about/press/elephant.png" height="14" width="14">
-              <% end %>
-              <% if @buddy.skills.include?("html") %>
-                <img src="https://pixees.fr/wp-content/uploads/2015/11/david_roche_dr_12-300x300.png" height="18" width="18">
-              <% end %>
-              <% if @buddy.skills.include?("github") %>
-                <img src="https://png2.kisspng.com/sh/cb19d0b2a1ea6e43f969f1938184ef7d/L0KzQYm3VsIzN5pqj5H0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TfdqfJl6ep9yY3BxPbXskBlodl46eqRtOEW4coS8Vsc6OV86Sqg8N0KzQ4K8Usk4OGoASac7MUi7PsH1h5==/kisspng-computer-icons-github-icon-design-5b2d855b356791.5263720315297099152188.png" height="15" width="15">
-              <% end %>
-              <% if @buddy.skills.include?("heroku") %>
-                <img src="http://www.stickpng.com/assets/images/58480873cef1014c0b5e48ea.png" height="13" width="13">
-              <% end %>
-            </div>
-      	<%= f.input :start_date %>
-      	<%= f.input :end_date %>
-      	<%= f.submit "book buddy", class: "btn btn-info"%>
+        <%= @buddy.name %>
+        <p> <%= @buddy.description %> </p>
+        <%= f.input :start_date %>
+    	  <%= f.input :end_date %>
+    	  <%= f.submit "book buddy", class: "btn btn-info"%>
       <% end %>
-      </div>
     </div>
-
+     <h2><%= pluralize @buddy.reviews.size, "review" %></h2>
+     <div id="reviews">
+        <% if @buddy.reviews.blank? %>
+          Be the first to leave a review for <%= @buddy.name %>
+        <% else %>
+          <% sum = 0 %>
+          <% @buddy.reviews.each do |review| %>
+            <% sum += review.stars.to_i %>
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+          <%= sum / @buddy.reviews.size.to_f %>
+        <% end %>
+        <%= render 'reviews/form', buddy: @buddy, review: @review %>
+     </div>
+  </div>
 
 </div>
 
@@ -48,6 +34,8 @@
   style="width: 100%;
   height: 250px;"
   data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"> </div>
+     
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" />
+
 
 

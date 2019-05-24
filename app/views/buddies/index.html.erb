@@ -3,7 +3,7 @@
 <div class='row ml-3'>
   <div class="col-sm-4 scrollable">
     <%= form_tag buddies_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Skill wanted" %>
+      <%= text_field_tag :query, params[:query], class: "form-control mt-2", placeholder: "Skill wanted" %>
     <% end %>
     <% @buddies.each do |buddy| %>
       <div class="card-trip mt-2">
