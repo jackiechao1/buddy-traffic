@@ -3,18 +3,29 @@
 
   <div class="container">
     <div class="form-inputs">
-
-    <%= simple_form_for [@buddy, @booking] do |f|%>
-    <%= @buddy.name %>
-    <p> <%= @buddy.description %> </p>
-
-    	<%= f.input :start_date %>
-    	<%= f.input :end_date %>
-    	<%= f.submit "book buddy", class: "btn btn-info"%>
-    <% end %>
+      <%= simple_form_for [@buddy, @booking] do |f|%>
+        <%= @buddy.name %>
+        <p> <%= @buddy.description %> </p>
+        <%= f.input :start_date %>
+    	  <%= f.input :end_date %>
+    	  <%= f.submit "book buddy", class: "btn btn-info"%>
+      <% end %>
     </div>
+     <h2><%= pluralize @buddy.reviews.size, "review" %></h2>
+     <div id="reviews">
+        <% if @buddy.reviews.blank? %>
+          Be the first to leave a review for <%= @buddy.name %>
+        <% else %>
+          <% sum = 0 %>
+          <% @buddy.reviews.each do |review| %>
+            <% sum += review.stars.to_i %>
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+          <%= sum / @buddy.reviews.size.to_f %>
+        <% end %>
+        <%= render 'reviews/form', buddy: @buddy, review: @review %>
+     </div>
   </div>
-
 </div>
 
 <div
@@ -22,8 +33,6 @@
   style="width: 100%;
   height: 250px;"
   data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-
-</div>
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" />
 
 

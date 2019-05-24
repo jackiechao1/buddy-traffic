@@ -15,6 +15,7 @@ class BuddiesController < ApplicationController
   def show
     @buddy = Buddy.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
     @markers = [{ lat: @buddy.latitude, lng: @buddy.longitude }]
   end
 
