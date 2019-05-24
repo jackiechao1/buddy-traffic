@@ -10,12 +10,12 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/cutepoison/cjw14519x2sb61cpetlzlokfv'
+      style: 'mapbox://styles/cutepoison/cjw13m4fb0vgz1cmtnjwmlgc2'
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-      map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
 
   }
 };
