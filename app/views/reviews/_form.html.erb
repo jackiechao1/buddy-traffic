@@ -1,5 +1,5 @@
 <%= simple_form_for([ buddy, review ]) do |form| %>
   <%= form.input :stars, collection: (1..5).to_a%>
   <%= form.input :content, as: :text %>
-  <%= form.button :submit %>
+  <%= form.button :submit, class: "btn btn-info" %>
 <% end %>

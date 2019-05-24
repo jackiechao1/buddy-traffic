@@ -1,33 +1,18 @@
-
-
 <div class='row ml-3'>
-  <div class="col-sm-8 scrollable">
-    <div class="container">
+  <div class="col-sm-6 scrollable">
+    <div class="container buddy-container">
+      <h2><%= @buddy.name %></h2>
+      <p> <%= @buddy.description %> </p>
       <div class="form-inputs">
+        <%= simple_form_for [@buddy, @booking] do |f|%>
+          <%= f.input :start_date %>
+      	  <%= f.input :end_date %>
+      	  <%= f.submit "book buddy", class: "btn btn-info"%>
+        <% end %>
+      </div>
 
-
-      <%= simple_form_for [@buddy, @booking] do |f|%>
-        <%= @buddy.name %>
-        <p> <%= @buddy.description %> </p>
-        <%= f.input :start_date %>
-    	  <%= f.input :end_date %>
-    	  <%= f.submit "book buddy", class: "btn btn-info"%>
-      <% end %>
-    </div>
-
-  </div>
-  <div class="col-sm-4">
-    <div id="map"
-      style="width: 100%;
-      height: 100vh;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
-</div>
-
-     <h2><%= pluralize @buddy.reviews.size, "review" %></h2>
-     <div id="reviews">
+      <h2><%= pluralize @buddy.reviews.size, "review" %></h2>
+      <div id="reviews">
         <% if @buddy.reviews.blank? %>
           Be the first to leave a review for <%= @buddy.name %>
         <% else %>
@@ -39,9 +24,18 @@
           <%= sum / @buddy.reviews.size.to_f %>
         <% end %>
         <%= render 'reviews/form', buddy: @buddy, review: @review %>
-     </div>
+      </div>
+    </div>
   </div>
-
+  <div class="col-sm-6">
+    <div id="map"
+      style="width: 100%;
+      height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
+
 
 
