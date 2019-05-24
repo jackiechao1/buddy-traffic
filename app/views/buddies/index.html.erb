@@ -1,46 +1,48 @@
 
 
 <div class='row ml-3'>
-  <div class="col-sm-4 scrollable">
+  <div class="col-sm-6 scrollable">
     <%= form_tag buddies_path, method: :get do %>
       <%= text_field_tag :query, params[:query], class: "form-control mt-2", placeholder: "Skill wanted" %>
     <% end %>
-    <% @buddies.each do |buddy| %>
-      <div class="card-trip mt-2">
-        <%= cl_image_tag(buddy.picture, secure: true) %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
-            <% if buddy.skills.include?("ruby") %>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
-            <% end %>
-            <% if buddy.skills.include?("rails") %>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png" height="14" width="14">
-            <% end %>
-            <% if buddy.skills.include?("js") %>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" height="14" width="14">
-            <% end %>
-            <% if buddy.skills.include?("jquery") %>
-              <img src="http://kodeik.com/wp-content/uploads/2017/09/jquery1.png" height="16" width="16">
-            <% end %>
-            <% if buddy.skills.include?("sql") %>
-              <img src="https://www.postgresql.org/media/img/about/press/elephant.png" height="14" width="14">
-            <% end %>
-            <% if buddy.skills.include?("html") %>
-              <img src="https://pixees.fr/wp-content/uploads/2015/11/david_roche_dr_12-300x300.png" height="18" width="18">
-            <% end %>
-            <% if buddy.skills.include?("github") %>
-              <img src="https://png2.kisspng.com/sh/cb19d0b2a1ea6e43f969f1938184ef7d/L0KzQYm3VsIzN5pqj5H0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TfdqfJl6ep9yY3BxPbXskBlodl46eqRtOEW4coS8Vsc6OV86Sqg8N0KzQ4K8Usk4OGoASac7MUi7PsH1h5==/kisspng-computer-icons-github-icon-design-5b2d855b356791.5263720315297099152188.png" height="15" width="15">
-            <% end %>
-            <% if buddy.skills.include?("heroku") %>
-              <img src="http://www.stickpng.com/assets/images/58480873cef1014c0b5e48ea.png" height="13" width="13">
-            <% end %>
-          </div> 
+    <div class="cards-container">
+      <% @buddies.each do |buddy| %>
+        <div class="card-trip mt-2">
+          <%= cl_image_tag(buddy.picture, secure: true) %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to buddy.name, buddy_path(buddy) %></h2>
+              <% if buddy.skills.include?("ruby") %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" height="10" width="10">
+              <% end %>
+              <% if buddy.skills.include?("rails") %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png" height="14" width="14">
+              <% end %>
+              <% if buddy.skills.include?("js") %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" height="14" width="14">
+              <% end %>
+              <% if buddy.skills.include?("jquery") %>
+                <img src="http://kodeik.com/wp-content/uploads/2017/09/jquery1.png" height="16" width="16">
+              <% end %>
+              <% if buddy.skills.include?("sql") %>
+                <img src="https://www.postgresql.org/media/img/about/press/elephant.png" height="14" width="14">
+              <% end %>
+              <% if buddy.skills.include?("html") %>
+                <img src="https://pixees.fr/wp-content/uploads/2015/11/david_roche_dr_12-300x300.png" height="18" width="18">
+              <% end %>
+              <% if buddy.skills.include?("github") %>
+                <img src="https://png2.kisspng.com/sh/cb19d0b2a1ea6e43f969f1938184ef7d/L0KzQYm3VsIzN5pqj5H0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TfdqfJl6ep9yY3BxPbXskBlodl46eqRtOEW4coS8Vsc6OV86Sqg8N0KzQ4K8Usk4OGoASac7MUi7PsH1h5==/kisspng-computer-icons-github-icon-design-5b2d855b356791.5263720315297099152188.png" height="15" width="15">
+              <% end %>
+              <% if buddy.skills.include?("heroku") %>
+                <img src="http://www.stickpng.com/assets/images/58480873cef1014c0b5e48ea.png" height="13" width="13">
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-6">
     <div id="map"
       style="width: 100%;
       height: 100vh;"
