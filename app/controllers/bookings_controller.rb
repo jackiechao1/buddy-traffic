@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.buddy = Buddy.find(params[:buddy_id])
     @booking.user = current_user
     @booking.status = 'pending'
-    
+
     if @booking.save
       redirect_to bookings_path
     else
