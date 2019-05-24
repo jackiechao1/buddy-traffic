@@ -1,7 +1,7 @@
 class BuddiesController < ApplicationController
   def index
-    @buddies = Buddy.all
     @buddies = Buddy.where.not(latitude: nil, longitude: nil)
+    @buddies = @buddies.select { |buddy| buddy.skills.include?(params[:query]) } if params[:query].present?
 
     @markers = @buddies.map do |buddy|
       {

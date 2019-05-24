@@ -1,6 +1,10 @@
 
+
 <div class='row ml-3'>
   <div class="col-sm-4 scrollable">
+    <%= form_tag buddies_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Skill wanted" %>
+    <% end %>
     <% @buddies.each do |buddy| %>
       <div class="card-trip mt-2">
         <%= cl_image_tag(buddy.picture, secure: true) %>
@@ -43,7 +47,6 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
-
   </div>
 </div>
 
