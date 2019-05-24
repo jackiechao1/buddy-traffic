@@ -1,8 +1,8 @@
 
-<div class='row'>
-  <div class="col-sm-6">
+<div class='row ml-3'>
+  <div class="col-sm-4 scrollable">
     <% @buddies.each do |buddy| %>
-      <div class="card-trip">
+      <div class="card-trip mt-2">
         <%= cl_image_tag(buddy.picture, secure: true) %>
         <div class="card-trip-infos">
           <div>
@@ -36,7 +36,7 @@
       </div>
     <% end %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-8">
     <div id="map"
       style="width: 100%;
       height: 100vh;"
